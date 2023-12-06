@@ -5,7 +5,47 @@ from datetime import date
 import datetime
 import requests
 
+if __name__ == '__main__': #main name
+    textt = websoup()
+    #print (textt) #if you dare
+    inputList = ['Aspen Snowmass','Arapahoe Basin Ski Area','Copper Mountain','Eldora Mountain Resort','Steamboat']
+    AdjustCoef = [8,10,10,2,6] #adjustment for the 5 catagories -- | Gnar | base depth |24 hour |temp|traffic
+    gnarlist =[6,8,7,2,5] # how gnar it be
 
+    rangeList = [[1, 10], [10, 100], [0, 12], [-10, 60]] #reasonable range of 5 catagories, not extremes
+
+    if(WhatDayIsIt):
+        trafficlist = [274, 145, 154, 102, 250]  # minutes
+        #print("weekday traffic :)", trafficlist)
+    else:
+        trafficlist = [360, 195, 194, 122, 300]  # minutes +weekend traffic
+        #print("weekend traffic :(",trafficlist)
+
+    if intro():
+        score = MajicOracle(textt,gnarlist,inputList,trafficlist,AdjustCoef) # ~ call ~~ upon ~~~ the ~~~~ oracle ~~~~~
+        print("Cool Resorts",inputList)
+        int1=max(score)
+        int2=score.index(int1)
+        CoolestResort=inputList[int2]
+        texttt ="Allegedly, ",CoolestResort," is cooler then a Polar Bears' toenails on this festive day"
+        coolist = soupfinder(CoolestResort,textt)
+
+
+
+        print("\n")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~****MaJic^^sno^^@racLe****~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+        print(texttt)
+        print('base =',coolist[1],"in of knot pow")
+        print('last24 =',float(coolist[2])/10,"in of pow")
+        print('open percentage =',coolist[0])
+
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~***Now Quest For The POW***~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        
 def websoup():
     URL = "https://www.onthesnow.com/ikon-pass/skireport"
     r = requests.get(URL)
@@ -156,46 +196,7 @@ def WhatDayIsIt():
     else:
         return True
 
-if __name__ == '__main__': #main name
-    textt = websoup()
-    #print (textt) #if you dare
-    inputList = ['Aspen Snowmass','Arapahoe Basin Ski Area','Copper Mountain','Eldora Mountain Resort','Steamboat']
-    AdjustCoef = [8,10,10,2,6] #adjustment for the 5 catagories -- | Gnar | base depth |24 hour |temp|traffic
-    gnarlist =[6,8,7,2,5] # how gnar it be
 
-    rangeList = [[1, 10], [10, 100], [0, 12], [-10, 60]] #reasonable range of 5 catagories, not extremes
-
-    if(WhatDayIsIt):
-        trafficlist = [274, 145, 154, 102, 250]  # minutes
-        #print("weekday traffic :)", trafficlist)
-    else:
-        trafficlist = [360, 195, 194, 122, 300]  # minutes +weekend traffic
-        #print("weekend traffic :(",trafficlist)
-
-    if intro():
-        score = MajicOracle(textt,gnarlist,inputList,trafficlist,AdjustCoef) # ~ call ~~ upon ~~~ the ~~~~ oracle ~~~~~
-        print("Cool Resorts",inputList)
-        int1=max(score)
-        int2=score.index(int1)
-        CoolestResort=inputList[int2]
-        texttt ="Allegedly, ",CoolestResort," is cooler then a Polar Bears' toenails on this festive day"
-        coolist = soupfinder(CoolestResort,textt)
-
-
-
-        print("\n")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~****MaJic^^sno^^@racLe****~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-
-        print(texttt)
-        print('base =',coolist[1],"in of knot pow")
-        print('last24 =',float(coolist[2])/10,"in of pow")
-        print('open percentage =',coolist[0])
-
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~***Now Quest For The POW***~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
     #end python
 
