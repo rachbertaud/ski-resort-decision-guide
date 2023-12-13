@@ -10,7 +10,7 @@ if __name__ == '__main__': #main name
     #print (textt) #if you dare
     inputList = ['Aspen Snowmass','Arapahoe Basin Ski Area','Copper Mountain','Eldora Mountain Resort','Steamboat']
     AdjustCoef = [8,10,10,2,6] #adjustment for the 5 catagories -- | Gnar | base depth |24 hour |temp|traffic
-    gnarlist =[6,8,7,2,5] # how gnar it be
+    gnarlist =[6,8,7,2,5] # how gnar it be at resorts in oder of input list
 
     rangeList = [[1, 10], [10, 100], [0, 12], [-10, 60]] #reasonable range of 5 catagories, not extremes
 
